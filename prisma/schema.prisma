@@ -9,3 +9,41 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+model Product {
+  id          Int    @id @default(autoincrement())
+  name        String
+  price       Float
+  thumbnail   String
+  description String
+  color       String
+  brand       String
+  seller      Seller @relation(fields: [sellerId], references: [id])
+  sellerId    Int
+}
+
+model Seller {
+  id      Int       @id @default(autoincrement())
+  email   String    @unique
+  name    String
+  Product Product[]
+  Order   Order[]
+}
+
+model Client {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String
+  Order Order[]
+}
+
+model Order {
+  id         Int      @id @default(autoincrement())
+  client     Client   @relation(fields: [clientId], references: [id])
+  clientId   Int
+  seller     Seller   @relation(fields: [sellerId], references: [id])
+  sellerId   Int
+  totalPrice Int
+  status     String
+  createdAt  DateTime @default(now())
+}
