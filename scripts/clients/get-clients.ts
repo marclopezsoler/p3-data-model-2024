@@ -1,13 +1,10 @@
 import { PrismaClient } from "@prisma/client";
+import { getClients } from "../../src/clients";
 const prisma = new PrismaClient();
 
-async function main() {
-  try {
-    const clients = await prisma.client.findMany();
-    console.log("Clients: ", clients);
-  } catch (error) {
-    console.log(error);
-  }
-}
+const clients = await getClients();
+console.log("List of clients:");
 
-main();
+for (const { name, email } of clients) {
+  console.log(`${name}, with email address ${email}`);
+}
