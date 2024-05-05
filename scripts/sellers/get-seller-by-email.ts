@@ -1,12 +1,12 @@
-import { getClientByEmail, getClientById } from "../../src/clients";
+import { getSellerByEmail } from "../../src/sellers";
 
-const client = String(process.argv[2]);
+const seller = String(process.argv[2]);
 
-const clientEmail = await getClientByEmail(client);
+const sellerEmail = await getSellerByEmail(seller);
 
-if (clientEmail) {
-  console.log("Client:");
-  console.log(clientEmail);
+if (sellerEmail) {
+  console.log("Seller:");
+  console.log(sellerEmail);
 } else {
-  console.log("No client found with that email.");
+  console.log("No seller found with that email.");
 }

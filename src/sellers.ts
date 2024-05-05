@@ -1,8 +1,8 @@
 import { Prisma, PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-export type ManySellers = Prisma.ClientCreateManyInput;
-export type SingleSeller = Prisma.ClientCreateInput;
+export type ManySellers = Prisma.SellerCreateManyInput;
+export type SingleSeller = Prisma.SellerCreateInput;
 
 export const getSellers = async (): Promise<ManySellers[]> => {
   return await prisma.seller.findMany();
