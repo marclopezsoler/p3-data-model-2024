@@ -1,20 +1,53 @@
-# Modelo de Datos
+# P3 - Data model | Online Store Database
 
-En esta práctica hay que desarrollar el modelo de datos para una aplicación que resulte de tu interés. (No es necesario pensar en la autenticación aún, estudiaremos eso por separado.)
+That database model simulates a DB from an online store, containing 4 entities: **Seller**, **Client**, **Product** & **Order**.
 
-Se trata, como otras veces, de hacer un _fork_ de este repositorio y trabajar en él.
+## Step to initialize
 
-La solución del ejercicio debe ser un proyecto Javascript con:
-- El esquema de Prisma (`schema.prisma`).
-- La configuración para una base de datos (con `docker-compose.yml`).
-- Rellenado con unos pocos datos de prueba.
-- Scripts en Typescript de demostración que hacen algunas cosas con los datos.
-- Documentación sobre cómo lanzar la base de datos y usar los scripts de demostración (sustituyendo este mismo README).
+- Clone the repo
+- Install all the dependencies: <code>bun install</code>
+- Start the sqlite container: <code>docker-compose -f docker/docker-compose up -d</code>
+- Create the DB: <code>bun prisma db push</code>
+- Fill the DB with seed data: <code>bun prisma db seed</code>
+- Access Prisma Studio: <code>bun prisma studio</code>
+- Execute the scripts, example: <code>bun run scripts/sellers/get-sellers.ts</code> or <code>bun run scripts/products/get-product-by-id.ts 5</code>
 
-## Esquema
 
-El esquema debe tener almenos 3 entidades, pero no hay límite superior. Empieza siempre por definir las entidades más importantes, y asegúrate de que las relaciones cumplen con las necesidades que has planteado (nunca hay una única solución, cada solución tienes sus ventajas e inconvenientes, simplemente hay que ser conscientes de ellos). Luego añade entidades para hacer crecer el modelo. No intentes hacerlo todo de golpe (a no ser que ya tengas experiencia).
+After the seeding is done, the DB is filled with:
+- 5 sellers
+- 10 clients
+- 10 products
+- 15 orders
 
-## Rellenado de datos de prueba
 
-Para crear los datos iniciales con los que poder hacer algo al principio se puede usar cualquier mecanismo que automatice la inserción. Se recomienda mirar la documentación sobre como usar `seed.ts` en Prisma, que es una manera semi-estandarizada.
+## Description of the scripts
+
+The scripts are separated by entities, here's a brief explanation of what each script should return when executed:
+
+### Sellers
+
+<code>get-sellers.ts</code>: Returns a list containing all 5 sellers.
+
+<code>get-seller-by-id.ts</code>: Returns the seller corresponding to the entered ID. 
+
+<code>get-seller-by-email.ts</code>: Returns the seller corresponding to the entered email.
+
+### Clients
+
+<code>get-clients.ts</code>: Returns a list containing all 10 clients.
+
+<code>get-client-by-id.ts</code>: Returns the client corresponding to the entered ID. 
+
+<code>get-client-by-email.ts</code>: Returns the client corresponding to the entered email.
+
+### Products
+
+<code>get-products.ts</code>: Returns a list containing all 10 products.
+
+<code>get-product-by-id.ts</code>: Returns the product corresponding to the entered ID. 
+
+### Orders
+
+<code>get-orders.ts</code>: Returns a list containing all 15 orders.
+
+<code>get-order-by-id.ts</code>: Returns the order corresponding to the entered ID. 
