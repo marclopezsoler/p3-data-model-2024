@@ -18,10 +18,10 @@ export async function getSellerById(
 }
 
 export async function getSellerByEmail(
-    sellerEmail: string
-  ): Promise<SingleSeller | null> {
-    const result = await prisma.seller.findUnique({
-      where: { email: sellerEmail },
-    });
-    return result === null ? null : result;
-  }
+  sellerEmail: string
+): Promise<SingleSeller | null> {
+  const result = await prisma.seller.findUnique({
+    where: { email: sellerEmail },
+  });
+  return result === null ? null : result;
+}

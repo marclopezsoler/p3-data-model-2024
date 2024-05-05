@@ -1,6 +1,4 @@
-import { PrismaClient } from "@prisma/client";
 import { getClients } from "../../src/clients";
-const prisma = new PrismaClient();
 
 const clients = await getClients();
 console.log("List of clients:");
