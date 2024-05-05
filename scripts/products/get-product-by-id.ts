@@ -1,12 +1,12 @@
-import { getClientById } from "../../src/clients";
+import { getProductById } from "../../src/products";
 
-const client = Number(process.argv[2]);
+const product = Number(process.argv[2]);
 
-const clientId = await getClientById(client);
+const productId = await getProductById(product);
 
-if (clientId) {
-  console.log("Client:");
-  console.log(clientId);
+if (productId) {
+  console.log("Product:");
+  console.log(productId);
 } else {
-  console.log("No client found with that ID.");
+  console.log("No product found with that ID.");
 }
